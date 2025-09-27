@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Buzz - Electric Vehicle Charging Solutions</title>
+    <style>
+        :root {
+            --primary: #0066cc;
+            --secondary: #00a859;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 3rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #008e46;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1627860547596-235502ee274f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 120px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .chargers {
+            background-color: var(--light);
+        }
+        
+        .chargers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .charger-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .charger-kw {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .projects-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .project-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .project-status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .status-completed {
+            background-color: #e6f7ee;
+            color: var(--secondary);
+        }
+        
+        .status-in-progress {
+            background-color: #e6f0ff;
+            color: var(--primary);
+        }
+        
+        .software-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .warranty-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .warranty-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+        }
+        
+        .warranty-period {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-image {
+                flex: none;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero {
+                padding: 150px 0 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">EV <span>Buzz</span></a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#chargers">Chargers</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#software">Software</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Charge Ahead: The Future is Electric</h1>
+            <p>POWERING THE FUTURE OF EV CHARGING</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Who We Are</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>EV Buzz is your one-stop partner for commercial EV charging infrastructure. From providing the latest ultra-fast DC chargers to offering complete turnkey services, we help property owners and investors step into the profitable EV charging industry without complications.</p>
+                    <p>Our mission is to accelerate the transition to sustainable transportation by making EV charging accessible, reliable, and profitable for businesses across the country.</p>
+                    <a href="#services" class="btn">Our Services</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1593941707882-a5bba533a0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="EV Charging Station">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📍</div>
+                    <h3>Location Assistance</h3>
+                    <p>We provide prime location assistance at high-traffic areas across the U.S. Rent or partner with property owners for strategic placement to unlock maximum ROI.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Certified Contractors & Hassle-Free Setup</h3>
+                    <p>We connect you with trusted, certified contractors to build and install your charging infrastructure with fast installation and compliance with all regulations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Operations & Maintenance</h3>
+                    <p>We don't stop after installation. Our team provides regular maintenance, upgrades, and 24/7 support to minimize downtime and maximize performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chargers" class="chargers">
+        <div class="container">
+            <h2>Ultra-Fast DC Charging Stations</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">We provide state-of-the-art DC chargers with cutting-edge technology that are future-ready, highly reliable, and fully compatible with all EV models.</p>
+            <div class="chargers-grid">
+                <div class="charger-card">
+                    <div class="charger-kw">180kW</div>
+                    <h3>Medium-Sized Hubs</h3>
+                    <p>Perfect for medium-sized charging hubs with balanced power and efficiency.</p>
+                </div>
+                <div class="charger-card">
+                    <div class="charger-kw">240kW</div>
+                    <h3>Commercial & Highway</h3>
+                    <p>Ideal for commercial locations and highway stops requiring faster charging.</p>
+                </div>
+                <div class="charger-card">
+                    <div class="charger-kw">350kW</div>
+                    <h3>Maximum Power</h3>
+                    <p>Superfast chargers designed for maximum power and minimal wait time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Current Projects</h2>
+            <div class="projects-list">
+                <div class="project-item">
+                    <span class="project-status status-completed">Installation Completed</span>
+                    <h3>3302 S Diamond Bar Blvd, Diamond Bar, CA 91765</h3>
+                    <p>Expected to be energized first week of October 2025.</p>
+                </div>
+                <div class="project-item">
+                    <span class="project-status status-in-progress">Installation in Progress</span>
+                    <h3>6002 Bolsa Ave, Huntington Beach, CA</h3>
+                    <p>Expected to be energized last week of October 2025.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="software" class="software">
+        <div class="container">
+            <h2>Smart Software Solution</h2>
+            <div class="software-features">
+                <div class="feature-card">
+                    <h3>Smart Dashboard</h3>
+                    <p>Our software ecosystem ensures your chargers are easy to use and manage. Owners can remotely manage stations, monitor revenue, and check system health with advanced analytics for usage patterns & energy insights.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>EV Buzz Mobile App</h3>
+                    <p>A comprehensive app for charger owners and users. Users can locate chargers, check availability, and pay seamlessly with 24/7 technical support built right into the app.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Payment Integration</h3>
+                    <p>Integrated payment system (credit card, wallet, app payments) making transactions seamless and convenient for every user.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="warranty">
+        <div class="container">
+            <h2>Comprehensive Warranty & Support</h2>
+            <div class="warranty-cards">
+                <div class="warranty-card">
+                    <div class="warranty-period">2 Years</div>
+                    <h3>Standard Warranty</h3>
+                    <p>Comprehensive coverage for all components and software.</p>
+                </div>
+                <div class="warranty-card">
+                    <div class="warranty-period">5 Years</div>
+                    <h3>Extended Warranty</h3>
+                    <p>Extended protection available for long-term peace of mind.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem;">To maximize uptime and performance, EV Buzz provides two free inspections every year for all installed chargers.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch with Us</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p>Ready to power the future of EV charging? Contact us today to discuss your project needs.</p>
+                <a href="mailto:info@evbuzzapp.com" class="btn">Email Us</a>
+                <a href="tel:+1-800-EV-BUZZ" class="btn btn-secondary" style="margin-left: 15px;">Call Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EV Buzz</h3>
+                    <p>Your one-stop partner for commercial EV charging infrastructure.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#chargers">Chargers</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:info@evbuzzapp.com">info@evbuzzapp.com</a></li>
+                        <li><a href="tel:+1-800-EV-BUZZ">1-800-EV-BUZZ</a></li>
+                        <li><a href="www.evbuzzapp.com">www.evbuzzapp.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EV Buzz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+        
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
